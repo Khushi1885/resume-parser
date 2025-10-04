@@ -1,0 +1,21 @@
+
+
+
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2 class="mb-4">Parsed Resume Details</h2>
+        {% if data %}
+            <ul class="list-group shadow">
+                <li class="list-group-item"><strong>Name:</strong> {{ data.Name }}</li>
+                <li class="list-group-item"><strong>Email:</strong> {{ data.Email }}</li>
+                <li class="list-group-item"><strong>Phone:</strong> {{ data.Phone }}</li>
+                <li class="list-group-item"><strong>Summary:</strong> <pre>{{ data.Summary }}</pre></li>
+            </ul>
+        {% else %}
+            <div class="alert alert-warning">No resume uploaded yet.</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Parser</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Optional: Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
+        <a class="navbar-brand" href="#">ResumeParser AI</a>
+        <div class="ms-auto">
+            {% if session.get('user') %}
+                <span class="text-white me-3">Welcome, {{ session['user'] }}</span>
+                <a class="btn btn-outline-light btn-sm me-2" href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a class="btn btn-outline-light btn-sm me-2" href="{{ url_for('upload') }}">Upload</a>
+                <a class="btn btn-danger btn-sm" href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a class="btn btn-outline-light btn-sm me-2" href="{{ url_for('login') }}">Login</a>
+                <a class="btn btn-outline-light btn-sm" href="{{ url_for('signup') }}">Signup</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="text-center py-4 mt-5 text-muted">
+        &copy; {{ 2025 }} Resume Parser AI. All rights reserved.
+    </footer>
+
+</body>
+</html>
