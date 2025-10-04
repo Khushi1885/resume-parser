@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 app.secret_key = "your_secret_key"
 
-# ✅ PostgreSQL DB connection string (directly pasted here for now)
+# ✅ PostgreSQL DB connection string (adjust if needed)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:khushi157802@db.ozcgapincdurbbmquspx.supabase.co:5432/postgres"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -88,5 +88,7 @@ def logout():
     session.pop('user', None)
     return redirect(url_for('login'))
 
+# ✅ Required for Railway to expose app publicly
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
