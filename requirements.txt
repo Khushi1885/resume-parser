@@ -4,3 +4,5 @@ Flask-SQLAlchemy
 pdfplumber
 python-docx
 Werkzeug
+psycopg2-binary
+
